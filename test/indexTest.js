@@ -1,3 +1,36 @@
+const employee = { name: 'Sam', streetAddress: '123 Main St' };
+
+// Non-destructively update employee with a new key-value pair
+function updateEmployeeWithKeyAndValue(employee, key, value) {
+  // Use the spread operator to create a new object with existing properties
+  // and the new key-value pair
+  return { ...employee, [key]: value };
+}
+
+// Destructively update employee with a new key-value pair
+function destructivelyUpdateEmployeeWithKeyAndValue(employee, key, value) {
+  // Update the existing employee object directly (destructive)
+  employee[key] = value;
+  return employee;
+}
+
+// Non-destructively delete a property from the employee object
+function deleteFromEmployeeByKey(employee, key) {
+  // Use the spread operator to create a new object excluding the specified key
+  const { [key]: _, ...newEmployee } = employee;
+  return newEmployee;
+}
+
+// Destructively delete a property from the employee object
+function destructivelyDeleteFromEmployeeByKey(employee, key) {
+  // Delete the property directly from the existing object (destructive)
+  delete employee[key];
+  return employee;
+}
+
+
+
+
 require ( './helpers.js' );
 
 describe('employees', function() {
